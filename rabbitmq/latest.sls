@@ -12,10 +12,10 @@ rabbitmq_repo_pkg_deps:
 # TODO: install specific Erlang and RabbitMQ releases (see https://www.rabbitmq.com/install-debian.html)
 erlang_repo:
   pkgrepo.managed:
-    - humanname: Erlang from CloudSmith Repository
-    - name: deb https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/deb/debian {{ salt['grains.get']('oscodename') }} main
+    - humanname: Erlang from erlang-solutions Repository
+    - name: deb https://packages.erlang-solutions.com/debian {{ salt['grains.get']('oscodename') }} contrib
     - file: /etc/apt/sources.list.d/erlang.list
-    - key_url: https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
+    - key_url: https://packages.erlang-solutions.com/debian/erlang_solutions.asc
     - require_in:
       - pkg: rabbitmq-server
 rabbitmq_repo:
