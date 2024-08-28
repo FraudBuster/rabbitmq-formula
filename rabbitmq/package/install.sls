@@ -41,10 +41,26 @@ rabbitmq-package-install-pkg-binary-plugins:
     - require:
       - pkg: rabbitmq-package-install-pkg-installed
 
-rabbitmq-package-remove-old-erlang-repo:
+rabbitmq-package-remove-old-erlang-repo-bintray:
   pkgrepo.absent:
     - name: deb https://dl.bintray.com/rabbitmq-erlang/debian {{ salt['grains.get']('oscodename') }} erlang
 
-rabbitmq-package-remove-old-rabbitmq-repo:
+rabbitmq-package-remove-old-rabbitmq-repo-bintray:
   pkgrepo.absent:
     - name: deb https://dl.bintray.com/rabbitmq/debian {{ salt['grains.get']('oscodename') }} main
+
+rabbitmq-package-remove-old-erlang-repo-cloudsmith:
+  pkgrepo.absent:
+    - name: deb https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/deb/debian {{ salt['grains.get']('oscodename') }} main
+
+rabbitmq-package-remove-old-rabbitmq-repo-cloudsmith:
+  pkgrepo.absent:
+    - name: deb https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-server/deb/debian {{ salt['grains.get']('oscodename') }} main
+
+rabbitmq-package-remove-old-erlang-repo-novemberain:
+  pkgrepo.absent:
+    - name: deb https://ppa1.novemberain.com/rabbitmq/rabbitmq-erlang/deb/debian {{ salt['grains.get']('oscodename') }} main
+
+rabbitmq-package-remove-old-rabbitmq-repo-novemberain:
+  pkgrepo.absent:
+    - name: deb https://ppa1.novemberain.com/rabbitmq/rabbitmq-server/deb/debian {{ salt['grains.get']('oscodename') }} main
